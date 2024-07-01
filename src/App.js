@@ -1,23 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import Matrix from "./components/Matrix";
+import Button from "./components/Button";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-slate-600 min-h-screen text-white flex flex-col justify-center items-center" >
+      <h1 className="text-4xl mb-7" >Tic Tac Toe</h1>
+      <h2 className="text-3xl mb-4" >Play</h2>
+      <Matrix />
+      <Button className="text-2xl border-solid border-2 p-1 mt-4" >Reset</Button>
     </div>
   );
 }
