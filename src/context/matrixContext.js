@@ -5,9 +5,9 @@ const setMatrixContext = createContext(null)
 
 export function MatrixProvider({children}){
 	const [matrixState, setMatrixState] = useState([
-		{id: 0, value: 'O'}, {id: 1, value: 'G'}, {id: 2, value: 'O'},
-		{id: 3, value: 'X'}, {id: 4, value: 'O'}, {id: 5, value: 'X'},
-		{id: 6, value: 'O'}, {id: 7, value: 'X'}, {id: 8, value: 'O'},
+		{id: 0, value: null}, {id: 1, value: 'G'}, {id: 2, value: 'O'},
+		{id: 3, value: 'X'}, {id: 4, value: 'O'}, {id: 5, value: null},
+		{id: 6, value: 'O'}, {id: 7, value: null}, {id: 8, value: 'O'},
 	])
 
 	return (
