@@ -1,6 +1,5 @@
 import { useMatrix } from "../context/matrixContext";
 
-
 export default function useLineups(){
 	const matrix = useMatrix()
 	return [

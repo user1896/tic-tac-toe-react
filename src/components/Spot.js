@@ -1,10 +1,8 @@
 import { useMatrix, useSetMatrix } from "../context/matrixContext"
-import useLineups from "../modules/lineups"
 
 export default function Spot({id ,mark}){
 	const matrix = useMatrix()
 	const setMatrix = useSetMatrix()
-	const lineups = useLineups()
 
 	function handleClick(e){
 		const newMatrix = matrix.map( position => {
@@ -17,7 +15,6 @@ export default function Spot({id ,mark}){
 		} )
 
 		setMatrix(newMatrix)
-		console.log(lineups)
 	}
 
 	return (
