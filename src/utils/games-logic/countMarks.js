@@ -1,4 +1,4 @@
-function howManyMarksInLineup( lineup, playersMark ){
+function countMarks( lineup, playersMark ){
 	let countMarks = 0
 	for( let i = 0; i < 3; i++ ){
 		if( lineup[i].value && (lineup[i].value === playersMark) ){
@@ -8,4 +8,4 @@ function howManyMarksInLineup( lineup, playersMark ){
 	return countMarks
 }
 
-export default howManyMarksInLineup
+export default countMarks
