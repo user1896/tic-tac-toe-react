@@ -1,4 +1,5 @@
 import { useMatrix, useSetMatrix } from "../context/matrixContext"
+import usePlay from "../hooks/usePlay"
 
 export default function Spot({id ,mark}){
 	const matrix = useMatrix()
@@ -7,7 +8,7 @@ export default function Spot({id ,mark}){
 	function handleClick(e){
 		const newMatrix = matrix.map( position => {
 			if(position.id == e.target.id){
-				return {id: e.target.id, value: 'N'}
+				return {id: e.target.id, value: 'X'}
 			}
 			else{
 				return position
@@ -15,6 +16,8 @@ export default function Spot({id ,mark}){
 		} )
 
 		setMatrix(newMatrix)
+		// const nextO = usePlay('O', 'X')
+		// console.log("next O will be in ",nextO)
 	}
 
 	return (
