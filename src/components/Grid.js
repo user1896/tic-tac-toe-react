@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react"
+import { Fragment, useEffect, useState } from "react"
 import Spot from "./Spot"
 import { useMatrix } from "../context/matrixContext"
 
@@ -14,7 +14,9 @@ export default function Grid(){
 			<Spot id={spot.id} mark={spot.value} />
 		</Fragment>
 	)
-	// usePlay('O', 'X')
+
+	const matrix_position_id = usePlay('O', 'X')
+	console.log(matrix_position_id)
 
 	return (
 		<div className="grid gap-4 grid-cols-3 grid-rows-3" >

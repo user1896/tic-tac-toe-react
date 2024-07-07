@@ -1,5 +1,5 @@
 import Grid from "./components/Grid";
-import Button from "./components/Button";
+import ResetButton from "./components/ResetButton";
 import { MatrixProvider } from "./context/matrixContext";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
         <h1 className="text-4xl mb-7" >Tic Tac Toe</h1>
         <h2 className="text-3xl mb-4" >Play</h2>
         <Grid />
-        <Button className="text-2xl border-solid border-2 p-1 mt-4" >Reset</Button>
+        <ResetButton />
       </div>
     </MatrixProvider>
   );
