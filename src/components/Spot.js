@@ -1,7 +1,8 @@
-import { useMatrix, useSetMatrix } from "../context/matrixContext"
-import usePlay from "../hooks/usePlay"
+import { useMatrix, useSetMatrix, useSetIndex } from "../context/matrixContext"
 
 export default function Spot({id ,mark}){
+	const setIndex = useSetIndex()
+
 	const matrix = useMatrix()
 	const setMatrix = useSetMatrix()
 
@@ -17,8 +18,7 @@ export default function Spot({id ,mark}){
 			} )
 	
 			setMatrix(newMatrix)
-			// const nextO = usePlay('O', 'X')
-			// console.log("next O will be in ",nextO)
+			setIndex(true)
 		}
 	}
 
