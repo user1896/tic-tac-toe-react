@@ -1,7 +1,7 @@
-import { useMatrix, useSetMatrix, useSetIndex } from "../context/matrixContext"
+import { useMatrix, useSetMatrix, useIndex } from "../context/matrixContext"
 
 export default function Spot({id ,mark}){
-	const setIndex = useSetIndex()
+	const index = useIndex()
 
 	const matrix = useMatrix()
 	const setMatrix = useSetMatrix()
@@ -18,7 +18,7 @@ export default function Spot({id ,mark}){
 			} )
 	
 			setMatrix(newMatrix)
-			setIndex(true)
+			index.current = true
 		}
 	}
 

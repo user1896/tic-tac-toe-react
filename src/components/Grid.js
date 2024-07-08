@@ -1,12 +1,11 @@
 import { Fragment } from "react"
 import Spot from "./Spot"
-import { useMatrix, useSetMatrix, useIndex, useSetIndex } from "../context/matrixContext"
+import { useMatrix, useSetMatrix, useIndex } from "../context/matrixContext"
 
 import usePlay from '../hooks/usePlay'
 /* this component should have a side effect or something that call usePlay when the matrix state changes */
 export default function Grid(){
 	const index = useIndex()
-	const setIndex = useSetIndex()
 
 	const matrix = useMatrix()
 	const setMatrix = useSetMatrix()
@@ -14,7 +13,7 @@ export default function Grid(){
 	const matrix_position_id = usePlay('O', 'X')
 	console.log(matrix_position_id)
 
-	if(index === true){
+	if(index.current === true){
 		const newMatrix = matrix.map( position => {
 			if(position.id == matrix_position_id){
 				return {id: matrix_position_id, value: 'O'}
@@ -25,7 +24,7 @@ export default function Grid(){
 		} )
 
 		setMatrix(newMatrix)
-		setIndex(false)
+		index.current = false
 	}
 
 	// we transorm the matrix of data into a matrix of components:
