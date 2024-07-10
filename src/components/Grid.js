@@ -21,9 +21,13 @@ export default function Grid(){
 		// "!gameStatus.player" means we don't have a winner yet, because inside this condition we do:
 		// "setGameStatus(winner)" so if we enter the condition everytime we have a winner and we set a winner
 		// inside, we'll have an infinite render loop
-		if(winner.player && !gameStatus.player){
-			console.log("we're in")
-			setGameStatus(winner)
+		if(!gameStatus.player){
+			if(winner.player){
+				setGameStatus({lineup: winner.lineup, player: winner.player+" won"})
+			}
+			else if(tmpClicks.current == 5){
+				setGameStatus({lineup: null, player: 'Draw'})
+			}
 		}
 	},[winner])
 
@@ -48,8 +52,6 @@ export default function Grid(){
 			<Spot id={spot.id} mark={spot.value} />
 		</Fragment>
 	)
-
-	console.log("winner lineup: ", winner)
 
 	return (
 		<div className="grid gap-4 grid-cols-3 grid-rows-3" >
