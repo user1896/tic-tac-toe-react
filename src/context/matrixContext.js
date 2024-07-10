@@ -1,11 +1,15 @@
 import { createContext, useContext, useRef, useState } from "react";
 
+const gameStatusContext = createContext(null)
+const setGameStatusContext = createContext(null)
+
 const tmpClicksContext = createContext(0)
 
 const matrixContext = createContext(null)
 const setMatrixContext = createContext(null)
 
 export function MatrixProvider({children}){
+	const [gameStatus, setGameStatus] = useState({lineup: null, player: null})
 	const tmpClicks = useRef(0)
 	const [matrixState, setMatrixState] = useState([
 		{id: 0, value: null}, {id: 1, value: null}, {id: 2, value: null},
@@ -14,16 +18,30 @@ export function MatrixProvider({children}){
 	])
 
 	return (
-		<tmpClicksContext.Provider value={tmpClicks}>
+		<gameStatusContext.Provider value={gameStatus}>
+			<setGameStatusContext.Provider value={setGameStatus}>
 
-			<matrixContext.Provider value={matrixState} >
-				<setMatrixContext.Provider value={setMatrixState}>
-					{children}
-				</setMatrixContext.Provider>
-			</matrixContext.Provider>
+				<tmpClicksContext.Provider value={tmpClicks}>
 
-		</tmpClicksContext.Provider>
+					<matrixContext.Provider value={matrixState} >
+						<setMatrixContext.Provider value={setMatrixState}>
+							{children}
+						</setMatrixContext.Provider>
+					</matrixContext.Provider>
+
+				</tmpClicksContext.Provider>
+
+			</setGameStatusContext.Provider>
+		</gameStatusContext.Provider>
 )
+}
+
+export function useGameStatus(){
+	return useContext(gameStatusContext)
+}
+
+export function useSetGameStatus(){
+	return useContext(setGameStatusContext)
 }
 
 export function useTmpClicks(){

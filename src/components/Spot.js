@@ -1,10 +1,15 @@
-import { useMatrix, useSetMatrix, useTmpClicks } from "../context/matrixContext"
+import { useMatrix, useSetMatrix, useTmpClicks, useGameStatus } from "../context/matrixContext"
 
 export default function Spot({id ,mark}){
+	const gameStatus = useGameStatus()
+
 	const tmpClicks = useTmpClicks()
 
 	const matrix = useMatrix()
 	const setMatrix = useSetMatrix()
+
+	const className = `text-6xl font-semibold border-solid border-2
+		${!gameStatus.player ? "cursor-pointer" : ""} h-24 w-24 flex justify-center items-center`
 
 	function handleClick(e){
 		if(matrix[e.target.id].value == null){
@@ -24,10 +29,9 @@ export default function Spot({id ,mark}){
 
 	return (
 		<div
-			onClick={handleClick}
+			onClick={!gameStatus.player ? handleClick : null}
 			id={id}
-			className=
-				"text-6xl font-semibold border-solid border-2 cursor-pointer h-24 w-24 flex justify-center items-center"
+			className={className}
 		>
 			{mark}
 		</div>

@@ -1,7 +1,8 @@
-import { useMatrix, useSetMatrix } from "../context/matrixContext";
+import { useMatrix, useSetMatrix, useSetGameStatus } from "../context/matrixContext";
 import Button from "./Button";
 
 export default function ResetButton(){
+	const setGameStatus = useSetGameStatus()
 	const matrix = useMatrix()
 	const setMatrix = useSetMatrix()
 
@@ -9,6 +10,7 @@ export default function ResetButton(){
 		// Reset the matrix values
 		const newMatrix = matrix.map(position => ({id: position.id, value: null}))
     setMatrix(newMatrix)
+		setGameStatus({lineup: null, player: null})
 	}
 
 	return (
